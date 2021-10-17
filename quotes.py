@@ -36,7 +36,7 @@ def find_quotes(soup, list_quotes):
         list_quotes.append(dict({
                 "Phrase": format_phrase(phrase),
                 "Author": author,
-                "Tags": [tag.text for tag in tags]
+                "Tags": ", ".join([str(tag.text) for tag in tags])
                 }))
 
 
