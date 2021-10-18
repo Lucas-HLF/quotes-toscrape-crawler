@@ -17,7 +17,8 @@ def page_navegation():
             print(f"Última página, Página {url[-3::].replace('/', '')}")
             break
 
-    with open("quote.json", "a", encoding="utf-8") as json_file:
+    with open("quote.json", "w", encoding="utf-8") as json_file:
+        list_quotes = [i for i in list_quotes if i != None]
         json.dump(list_quotes, json_file)
 
 
@@ -36,7 +37,7 @@ def find_quotes(soup, list_quotes):
         list_quotes.append(dict({
                 "Phrase": format_phrase(phrase),
                 "Author": author,
-                "Tags": ", ".join([str(tag.text) for tag in tags])
+                "Tags": [tag.text for tag in tags]
                 }))
 
 
